@@ -1,3 +1,4 @@
+# update_ops.py
 from db import connect
 
 def update_entry(old_name, new_name=None, new_phone=None):
@@ -8,5 +9,6 @@ def update_entry(old_name, new_name=None, new_phone=None):
     if new_phone:
         cur.execute("UPDATE phonebook SET phone = %s WHERE first_name = %s", (new_phone, old_name))
     conn.commit()
+    cur.close()
     conn.close()
     print("Update successful!")
